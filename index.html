@@ -3,112 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yusra's Twitchcord</title>
+    <title>Portofolio | Yusra</title>
     <style>
-        /* Variabel Warna Twitch */
         :root {
             --twitch-purple: #9146FF;
             --twitch-dark: #18181b;
-            --twitch-chat: #0e0e10;
-            --text-light: #efeff1;
+            --twitch-sidebar: #0e0e10;
+            --twitch-card: #1f1f23;
+            --text-main: #efeff1;
+            --text-dim: #adadb8;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            display: flex; /* Membuat layout samping-sampingan seperti Discord */
-            height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0;
+            display: flex; height: 100vh;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             background-color: var(--twitch-dark);
-            color: var(--text-light);
+            color: var(--text-main);
         }
 
-        /* Sidebar Ala Discord */
+        /* Sidebar Kiri - Navigasi Icon */
         .sidebar {
-            width: 70px;
-            background-color: var(--twitch-chat);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 15px;
-            border-right: 1px solid #2f2f35;
+            width: 72px; background-color: var(--twitch-sidebar);
+            display: flex; flex-direction: column; align-items: center;
+            padding-top: 20px; border-right: 1px solid #2f2f35;
         }
 
-        .server-icon {
-            width: 48px;
-            height: 48px;
+        .nav-icon {
+            width: 48px; height: 48px;
+            background-color: var(--twitch-card);
+            border-radius: 50%; margin-bottom: 15px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .nav-icon:hover {
+            border-radius: 30%;
             background-color: var(--twitch-purple);
-            border-radius: 50%; /* Membuat lingkaran */
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
         }
 
-        .server-icon:hover {
-            border-radius: 30%; /* Efek hover ala Discord */
-        }
-
-        /* Area Utama */
-        .main-content {
+        /* Konten Utama */
+        .main-view {
             flex-grow: 1;
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
         }
 
         header {
-            height: 50px;
-            background-color: var(--twitch-dark);
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            border-bottom: 1px solid #2f2f35;
+            padding: 40px 60px;
+            background: linear-gradient(180deg, var(--twitch-purple) 0%, var(--twitch-dark) 100%);
+        }
+
+        .profile-section {
+            padding: 0 60px 40px 60px;
+        }
+
+        .badge {
+            background-color: var(--twitch-purple);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: bold;
+            text-transform: uppercase;
         }
 
-        .chat-area {
-            padding: 20px;
-            overflow-y: auto;
+        h1 { font-size: 48px; margin: 10px 0; }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        .message {
-            margin-bottom: 15px;
+        .card {
+            background-color: var(--twitch-card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #2f2f35;
         }
 
-        .username {
-            color: var(--twitch-purple);
-            font-weight: bold;
-            margin-right: 8px;
+        .card h3 { color: var(--twitch-purple); margin-top: 0; }
+
+        .skill-tag {
+            display: inline-block;
+            background: #2f2f35;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin: 4px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
-        <div class="server-icon">Y</div>
-        <div class="server-icon" style="background-color: #333;">+</div>
+        <div class="nav-icon" title="Home">🏠</div>
+        <div class="nav-icon" title="Project">💻</div>
+        <div class="nav-icon" title="Contact">📱</div>
     </div>
 
-    <div class="main-content">
-        <header># belajar-frontend-yusra</header>
-        
-        <div class="chat-area">
-            <div class="message">
-                <span class="username">System:</span>
-                <span>Selamat datang di server belajar Yusra!</span>
+    <div class="main-view">
+        <header>
+            <span class="badge">Aspirant Frontend Developer</span>
+            <h1>Halo, Saya Yusra</h1>
+            <p style="font-size: 18px; color: var(--text-dim);">
+                Membangun pengalaman web modern dengan sentuhan estetika Discord & Twitch.
+            </p>
+        </header>
+
+        <section class="profile-section">
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Tentang Saya</h3>
+                    <p>Saya adalah seorang pembelajar mandiri yang fokus pada pengembangan antarmuka web (Frontend). Saat ini sedang aktif membangun portofolio di GitHub menggunakan komputer sekolah.</p>
+                    <p><strong>Misi:</strong> Menjadi developer profesional dan bekerja di lingkup internasional.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Kemampuan</h3>
+                    <div class="skill-tag">HTML5</div>
+                    <div class="skill-tag">CSS3 (Flexbox & Grid)</div>
+                    <div class="skill-tag">Git & GitHub</div>
+                    <div class="skill-tag">Modern UI Design</div>
+                    <div class="skill-tag">Problem Solving</div>
+                </div>
+
+                <div class="card">
+                    <h3>Status Perangkat</h3>
+                    <p>Menabung untuk: <strong>ThinkPad T480</strong></p>
+                    <div style="background: #2f2f35; height: 10px; border-radius: 5px;">
+                        <div style="background: var(--twitch-purple); width: 30%; height: 100%; border-radius: 5px;"></div>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-dim); margin-top: 5px;">Progress Tabungan: 30%</p>
+                </div>
             </div>
-            <div class="message">
-                <span class="username">Yusra:</span>
-                <span>Lagi nyoba bikin tampilan mirip Discord pake warna Twitch nih. 🔥</span>
-            </div>
-            <div class="message">
-                <span class="username">Gemini:</span>
-                <span>Keren banget! Ini sudah pakai sistem Flexbox loh.</span>
-            </div>
-        </div>
+        </section>
     </div>
 
 </body>
