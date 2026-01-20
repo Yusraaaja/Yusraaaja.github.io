@@ -3,44 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Pertama Yusra</title>
+    <title>Yusra's Twitchcord</title>
     <style>
-        /* Ini adalah CSS untuk menghias website */
+        /* Variabel Warna Twitch */
+        :root {
+            --twitch-purple: #9146FF;
+            --twitch-dark: #18181b;
+            --twitch-chat: #0e0e10;
+            --text-light: #efeff1;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
             margin: 0;
+            padding: 0;
+            display: flex; /* Membuat layout samping-sampingan seperti Discord */
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--twitch-dark);
+            color: var(--text-light);
+        }
+
+        /* Sidebar Ala Discord */
+        .sidebar {
+            width: 70px;
+            background-color: var(--twitch-chat);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 15px;
+            border-right: 1px solid #2f2f35;
+        }
+
+        .server-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--twitch-purple);
+            border-radius: 50%; /* Membuat lingkaran */
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .server-icon:hover {
+            border-radius: 30%; /* Efek hover ala Discord */
+        }
+
+        /* Area Utama */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            height: 50px;
+            background-color: var(--twitch-dark);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid #2f2f35;
+            font-weight: bold;
+        }
+
+        .chat-area {
             padding: 20px;
-            background-color: #f4f4f4; /* Warna abu-abu muda */
-            color: #333; /* Warna teks gelap */
+            overflow-y: auto;
         }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        .message {
+            margin-bottom: 15px;
         }
-        h1 { color: #007bff; } /* Warna biru profesional */
-        .target-list { background: #e9ecef; padding: 15px; border-radius: 5px; }
+
+        .username {
+            color: var(--twitch-purple);
+            font-weight: bold;
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Halo, Saya Yusra!</h1>
-        <p>Saya sedang membangun fondasi menjadi <strong>Frontend Developer</strong> untuk mengejar karir internasional.</p>
-        
-        <div class="target-list">
-            <h3>Target Belajar Minggu Ini:</h3>
-            <ul>
-                <li>Memahami struktur HTML</li>
-                <li>Mencoba CSS Dasar (Warna & Font)</li>
-                <li>Update GitHub secara rutin</li>
-            </ul>
-        </div>
-        
-        <p>Status Laptop: <em>Sedang menabung untuk ThinkPad T480 🚀</em></p>
+
+    <div class="sidebar">
+        <div class="server-icon">Y</div>
+        <div class="server-icon" style="background-color: #333;">+</div>
     </div>
+
+    <div class="main-content">
+        <header># belajar-frontend-yusra</header>
+        
+        <div class="chat-area">
+            <div class="message">
+                <span class="username">System:</span>
+                <span>Selamat datang di server belajar Yusra!</span>
+            </div>
+            <div class="message">
+                <span class="username">Yusra:</span>
+                <span>Lagi nyoba bikin tampilan mirip Discord pake warna Twitch nih. 🔥</span>
+            </div>
+            <div class="message">
+                <span class="username">Gemini:</span>
+                <span>Keren banget! Ini sudah pakai sistem Flexbox loh.</span>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
