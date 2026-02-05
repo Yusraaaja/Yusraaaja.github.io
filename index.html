@@ -91,6 +91,18 @@
 </head>
 <body>
 
+// Contoh script sederhana untuk efek mengetik
+const text = "DevSecOps Architect";
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
+        document.querySelector("h1 span").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 1500);
+    }
+}
+// Jalankan fungsi saat page load
+        
     <div class="main-dashboard">
         <section>
             <span class="status-badge">REDTEAM AGRESSIVE | LEARNING</span>
