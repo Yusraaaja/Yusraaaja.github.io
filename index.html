@@ -90,19 +90,8 @@
     </style>
 </head>
 <body>
-
-// Contoh script sederhana untuk efek mengetik
-const text = "DevSecOps Architect";
-let i = 0;
-function typeWriter() {
-    if (i < text.length) {
-        document.querySelector("h1 span").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 1500);
-    }
-}
-// Jalankan fungsi saat page load
-        
+        <div class="circle" style="width: 400px; height: 400px; top: -150px; left: -150px; background: rgba(112, 0, 255, 0.3); filter: blur(100px); position: fixed; border-radius: 50%; z-index: -1;"></div>
+<div class="circle" style="width: 350px; height: 350px; bottom: -100px; right: -100px; background: rgba(0, 209, 255, 0.2); filter: blur(100px); position: fixed; border-radius: 50%; z-index: -1;"></div>
     <div class="main-dashboard">
         <section>
             <span class="status-badge">REDTEAM AGRESSIVE | LEARNING</span>
@@ -137,6 +126,24 @@ function typeWriter() {
             </div>
         </aside>
     </div>
+<script>
+    const text = "DevSecOps Architect";
+    let i = 0;
+    
+    function typeWriter() {
+        if (i < text.length) {
+            // Kita arahkan ke span di dalam h1
+            document.querySelector("h1 span").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 150); // Kecepatan mengetik (ms)
+        }
+    }
 
+    // PENTING: Kosongkan dulu isi span di HTML agar tidak double
+    window.onload = function() {
+        document.querySelector("h1 span").innerHTML = ""; 
+        typeWriter();
+    };
+</script>
 </body>
 </html>
