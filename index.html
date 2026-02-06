@@ -58,9 +58,20 @@ a:hover {
             grid-template-columns: 2fr 1fr;
             gap: 30px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            <section style="margin-top: 40px; grid-column: span 2;">
+            <section id="projects" style="margin-top: 40px; grid-column: span 2;">
             id="projects"
     <h2 style="color: var(--accent-blue); margin-bottom: 20px;">$ ls ./active-projects</h2>
+            <section id="contact" style="margin-top: 60px; grid-column: span 2; text-align: center; padding-bottom: 50px;">
+    <div class="card" style="background: linear-gradient(135deg, rgba(112,0,255,0.1), rgba(0,209,255,0.1));">
+        <h2>Siap Berkolaborasi?</h2>
+        <p>Saya sedang mencari peluang Magang atau Freelance untuk periode Agustus 2026.</p>
+        <div style="margin-top: 25px;">
+            <a href="mailto:email-kamu@gmail.com" style="background: var(--accent-blue); color: black; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-right: 15px; display: inline-block;">Email Me</a>
+            <a href="https://wa.me/nomor-wa-kamu" style="border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block;">WhatsApp</a>
+        </div>
+    </div>
+</nav>
+
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
         
         <div class="card" style="cursor: pointer;">
@@ -128,12 +139,20 @@ a:hover {
     </style>
 </head>
 <body>
+    <nav style="position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 0;">
+    <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); width: fit-content; margin: 0 auto; padding: 10px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); display: flex; gap: 25px;">
+        <a href="#home" style="color: white; text-decoration: none; font-size: 14px; font-weight: 500;">Home</a>
+        <a href="#projects" style="color: white; text-decoration: none; font-size: 14px; font-weight: 500;">Projects</a>
+        <a href="#contact" style="color: var(--accent-blue); text-decoration: none; font-size: 14px; font-weight: 700;">Hire Me</a>
+    </div>
+</nav>
+
     <div style="position: fixed; top: -10%; left: -10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(112,0,255,0.2) 0%, transparent 70%); filter: blur(50px); z-index: -1;"></div>
 <div style="position: fixed; bottom: 10%; right: -5%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,209,255,0.15) 0%, transparent 70%); filter: blur(50px); z-index: -1;"></div>
     
     <div class="circle" style="width: 400px; height: 400px; top: -150px; left: -150px; background: rgba(112, 0, 255, 0.3); filter: blur(100px); position: fixed; border-radius: 50%; z-index: -1;"></div>
 <div class="circle" style="width: 350px; height: 350px; bottom: -100px; right: -100px; background: rgba(0, 209, 255, 0.2); filter: blur(100px); position: fixed; border-radius: 50%; z-index: -1;"></div>
-    <div class="main-dashboard">
+    <div class="main-dashboard" id="home">
         <section>
             <span class="status-badge">REDTEAM AGRESSIVE | LEARNING</span>
             <h1>Evolution to <span style="color: var(--accent-blue);">DevSecOps</span></h1>
