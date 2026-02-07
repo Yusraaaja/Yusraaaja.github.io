@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            /* Mode Gelap (Hacking) */
             --bg-color: #05050b;
             --glass-bg: rgba(255, 255, 255, 0.03);
             --accent-blue: #00d1ff;
@@ -16,170 +15,145 @@
             --border-glass: rgba(255, 255, 255, 0.1);
             --orb-1: rgba(112, 0, 255, 0.2);
             --orb-2: rgba(0, 209, 255, 0.15);
+            --card-text: #888;
         }
 
         body.light-mode {
-            /* Mode Terang (Angelic) */
             --bg-color: #f0f2f5;
             --glass-bg: rgba(255, 255, 255, 0.7);
-            --accent-blue: #d4af37; /* Emas */
-            --accent-purple: #ffffff;
-            --text-color: #333333;
+            --accent-blue: #d4af37;
+            --accent-purple: #b8860b;
+            --text-color: #333;
             --border-glass: rgba(212, 175, 55, 0.3);
             --orb-1: rgba(212, 175, 55, 0.2);
             --orb-2: rgba(255, 255, 255, 0.8);
+            --card-text: #555;
         }
 
-        /* Reset & Global */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: all 0.5s ease;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             overflow-x: hidden;
-            width: 100%;
         }
 
-        /* Latar Belakang Orbs */
-        .circle {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: -1;
-            transition: background 0.5s ease;
-        }
-
-        /* Navigasi */
+        /* --- NAVIGASI & SWITCH --- */
         nav {
             position: sticky;
             top: 0;
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 20px 0;
+            padding: 15px 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
         }
 
         .nav-container {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            padding: 10px 25px;
+            padding: 8px 20px;
             border-radius: 50px;
             border: 1px solid var(--border-glass);
             display: flex;
             align-items: center;
+            gap: 15px;
+        }
+
+        nav a { color: var(--text-color); text-decoration: none; font-size: 13px; font-weight: 500; }
+        
+        /* Tombol Switch UI Baru */
+        .theme-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #333;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+        }
+
+        .theme-switch .circle-toggle {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            left: 4px;
+            transition: 0.4s;
+            z-index: 2;
+        }
+
+        body.light-mode .theme-switch { background: #d4af37; }
+        body.light-mode .circle-toggle { transform: translateX(30px); }
+
+        .theme-switch i { font-size: 12px; color: #f1c40f; z-index: 1; }
+
+        /* --- LAYOUT --- */
+        .main-dashboard {
+            width: 92%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
             gap: 20px;
         }
 
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--accent-blue); }
-        body.light-mode nav a { color: #333 !important; }
-
-        /* Theme Switcher */
-        .theme-switch {
-            position: relative;
-            width: 50px;
-            height: 26px;
-        }
-        .theme-switch input { display: none; }
-        .slider {
-            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #333; transition: .4s; border-radius: 34px;
-            border: 1px solid var(--border-glass);
-        }
-        .slider:before {
-            position: absolute; content: "\f186"; font-family: "Font Awesome 6 Free";
-            font-weight: 900; height: 20px; width: 20px; left: 3px; bottom: 2px;
-            background-color: white; transition: .4s; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 12px; color: #333;
-        }
-        input:checked + .slider { background: linear-gradient(135deg, #d4af37, #f1c40f); }
-        input:checked + .slider:before {
-            transform: translateX(22px);
-            content: "\f185"; color: #d4af37;
-        }
-
-        /* Main Dashboard Grid */
-        .main-dashboard {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto 50px auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            align-items: start;
-        }
-
-        @media (max-width: 992px) {
-            .main-dashboard { grid-template-columns: 1fr; width: 95%; }
-            nav a { font-size: 12px; }
-        }
+        @media (max-width: 992px) { .main-dashboard { grid-template-columns: 1fr; } }
 
         .card {
             background: var(--glass-bg);
-            backdrop-filter: blur(15px);
             border: 1px solid var(--border-glass);
-            border-radius: 30px;
-            padding: 30px;
-            transition: 0.3s ease;
+            border-radius: 25px;
+            padding: 25px;
             margin-bottom: 20px;
-        }
-        .card:hover { border-color: var(--accent-blue); transform: translateY(-5px); }
-
-        /* Typography & Components */
-        h1 { font-size: 2.5rem; margin-bottom: 15px; line-height: 1.2; }
-        .status-badge {
-            display: inline-block; padding: 5px 15px; border-radius: 50px;
-            background: rgba(0, 209, 255, 0.1); color: var(--accent-blue);
-            font-size: 12px; font-weight: bold; border: 1px solid var(--accent-blue);
-            margin-bottom: 15px;
+            backdrop-filter: blur(15px);
         }
 
-        .progress-container {
-            background: rgba(0, 0, 0, 0.2); height: 10px; border-radius: 10px;
-            margin-top: 15px; overflow: hidden;
-        }
-        .progress-bar {
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
-            height: 100%; box-shadow: 0 0 15px var(--accent-blue);
-        }
-
-        /* Learning Stack */
+        /* --- LEARNING STACK & GLOW --- */
         .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px; }
+        
         .stack-icon { 
-            display: flex; flex-direction: column; align-items: center; 
-            padding: 10px; border-radius: 15px; transition: 0.3s;
-        }
-        .stack-icon:hover { background: rgba(255,255,255,0.05); }
-
-        /* Footer */
-        footer {
-            width: 100%; text-align: center; padding: 50px 20px;
-            font-size: 13px; opacity: 0.6;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            padding: 10px; border-radius: 12px; transition: 0.3s;
         }
 
-        /* Light Mode Specific Overrides */
-        body.light-mode [style*="color: #00ff41"], 
-        body.light-mode code {
-            color: #b8860b !important;
+        .stack-icon span { font-size: 10px; font-weight: bold; color: var(--text-color); }
+
+        /* Re-implementing Glow Effects */
+        .fa-python { color: #3776ab; }
+        .fa-linux { color: #fcc624; }
+        .fa-terminal { color: #00ff41; }
+        .fa-git-alt { color: #f05032; }
+        .fa-network-wired { color: #7000ff; }
+        .fa-cloud { color: #00d1ff; }
+
+        .stack-icon:hover { 
+            background: rgba(255,255,255,0.08); 
+            transform: translateY(-3px);
+            filter: drop-shadow(0 0 8px currentColor); 
         }
+
+        /* Fix visibility in light mode */
+        body.light-mode .fa-terminal { color: #b8860b; }
+        body.light-mode .fa-network-wired { color: #8b4513; }
+        body.light-mode .fa-cloud { color: #4682b4; }
+
+        /* --- COMPONENTS --- */
+        .progress-bar { background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue)); height: 10px; border-radius: 10px; }
+        .status-badge { display: inline-block; padding: 4px 12px; border-radius: 50px; border: 1px solid var(--accent-blue); color: var(--accent-blue); font-size: 11px; font-weight: bold; margin-bottom: 10px; }
+        
+        footer { text-align: center; padding: 40px 0; font-size: 12px; opacity: 0.6; }
+
     </style>
 </head>
 <body>
-
-    <div class="circle" style="width: 400px; height: 400px; top: -150px; left: -10%; background: var(--orb-1);"></div>
-    <div class="circle" style="width: 350px; height: 350px; bottom: -100px; right: -5%; background: var(--orb-2);"></div>
 
     <nav>
         <div class="nav-container">
@@ -187,44 +161,39 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Hire Me</a>
             <a href="https://github.com/Yusraaaja" target="_blank" style="color: var(--accent-blue) !important;">GitHub</a>
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch">
-                    <input type="checkbox" id="checkbox" onclick="toggleMode()">
-                    <div class="slider"></div>
-                </label>
+            
+            <div class="theme-switch" onclick="toggleMode()">
+                <div class="circle-toggle" id="toggle-circle"></div>
+                <i class="fas fa-moon" style="margin-left: 7px;"></i>
+                <i class="fas fa-sun" style="margin-right: 7px;"></i>
             </div>
         </div>
     </nav>
 
     <div class="main-dashboard" id="home">
         <main>
-            <section class="card" style="background: transparent; border: none; backdrop-filter: none;">
+            <section style="padding: 20px 0;">
                 <span class="status-badge">REDTEAM AGRESSIVE | LEARNING</span>
-                <h1>Evolution to <br><span id="typing" style="color: var(--accent-blue);"></span></h1>
-                <p>Berawal dari Python Automation di layar smartphone, menuju pengakuan di komunitas tech dengan grit tanpa batas.</p>
+                <h1 style="font-size: 2.5rem;">Evolution to <br><span id="typing" style="color: var(--accent-blue);"></span></h1>
+                <p style="margin-top: 10px; color: var(--card-text);">Berawal dari Python Automation di layar smartphone, menuju pengakuan di komunitas tech.</p>
             </section>
 
             <div class="card">
-                <h3 style="margin-bottom: 15px; font-family: monospace;">$ python3 automation.py</h3>
-                <code style="color: #00ff41; line-height: 1.6;">
+                <h3 style="font-family: monospace; font-size: 14px; margin-bottom: 10px;">$ python3 automation.py</h3>
+                <code id="terminal-text" style="color: #00ff41; line-height: 1.5; font-size: 13px;">
                     [+] Scanning vulnerabilities...<br>
                     [+] Deploying backend cloud...<br>
                     [+] Status: Success
                 </code>
             </div>
 
-            <section id="projects" style="margin-top: 40px;">
-                <h2 style="color: var(--accent-blue); margin-bottom: 20px;">$ ls ./active-projects</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <section id="projects">
+                <h2 style="color: var(--accent-blue); margin: 20px 0;">$ ls ./active-projects</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px;">
                     <div class="card">
-                        <span style="font-size: 11px; color: var(--accent-purple);">#Python #Automation</span>
-                        <h4 style="margin: 10px 0;">Auto-Reporting Script</h4>
-                        <p style="font-size: 13px; color: #888;">Otomasi laporan harian sekolah via Pydroid 3.</p>
-                    </div>
-                    <div class="card">
-                        <span style="font-size: 11px; color: var(--accent-purple);">#CyberSec #Termux</span>
-                        <h4 style="margin: 10px 0;">Wireless Scanner</h4>
-                        <p style="font-size: 13px; color: #888;">Eksperimen hardware hacking mobile device.</p>
+                        <span style="font-size: 10px; color: var(--accent-purple);">#Python #Automation</span>
+                        <h4 style="margin: 5px 0;">Auto-Reporting Script</h4>
+                        <p style="font-size: 12px; color: var(--card-text);">Otomasi laporan harian sekolah via Pydroid 3.</p>
                     </div>
                 </div>
             </section>
@@ -233,60 +202,38 @@
         <aside>
             <div class="card">
                 <h3>Hardware Goal</h3>
-                <p style="margin-top: 10px;">ThinkPad T480</p>
-                <div class="progress-container">
+                <p style="font-size: 14px; margin: 10px 0;">ThinkPad T480</p>
+                <div style="background: rgba(0,0,0,0.2); border-radius: 10px; height: 10px;">
                     <div class="progress-bar" style="width: 54%;"></div>
                 </div>
-                <p style="font-size: 11px; text-align: right; margin-top: 8px;">54% Menuju Maret 2026</p>
-            </div>
-
-            <div class="card">
-                <h3>Current Focus</h3>
-                <ul style="padding-left: 20px; font-size: 14px; color: #888; margin-top: 10px;">
-                    <li>Python Automation</li>
-                    <li>Malware Analysis</li>
-                    <li>Hardware Hacking</li>
-                </ul>
+                <p style="font-size: 10px; text-align: right; margin-top: 5px;">54% Menuju Maret 2026</p>
             </div>
 
             <div class="card">
                 <h3>Learning Stack</h3>
                 <div class="stack-grid">
-                    <div class="stack-icon"><i class="fa-brands fa-python" style="font-size: 24px; color: #3776ab;"></i></div>
-                    <div class="stack-icon"><i class="fa-brands fa-linux" style="font-size: 24px; color: #fcc624;"></i></div>
-                    <div class="stack-icon"><i class="fa-solid fa-terminal" style="font-size: 24px; color: #00ff41;"></i></div>
-                    <div class="stack-icon"><i class="fa-brands fa-git-alt" style="font-size: 24px; color: #f05032;"></i></div>
-                    <div class="stack-icon"><i class="fa-solid fa-network-wired" style="font-size: 24px; color: var(--accent-purple);"></i></div>
-                    <div class="stack-icon"><i class="fa-solid fa-cloud" style="font-size: 24px; color: var(--accent-blue);"></i></div>
+                    <div class="stack-icon"><i class="fab fa-python fa-2x"></i><span>Python</span></div>
+                    <div class="stack-icon"><i class="fab fa-linux fa-2x"></i><span>Linux</span></div>
+                    <div class="stack-icon"><i class="fas fa-terminal fa-2x"></i><span>Bash</span></div>
+                    <div class="stack-icon"><i class="fab fa-git-alt fa-2x"></i><span>Git</span></div>
+                    <div class="stack-icon"><i class="fas fa-network-wired fa-2x"></i><span>Network</span></div>
+                    <div class="stack-icon"><i class="fas fa-cloud fa-2x"></i><span>Cloud</span></div>
                 </div>
             </div>
 
-            <div class="card" style="font-family: monospace; font-size: 12px;">
-                <h4 style="color: var(--accent-blue); margin-bottom: 10px;">> System_Log</h4>
+            <div class="card" style="font-family: monospace; font-size: 11px;">
+                <h4 style="color: var(--accent-blue); margin-bottom: 8px;">> System_Log</h4>
                 <p style="color: #00ff41;">[OK] Env: Smartphone</p>
-                <p style="color: #00ff41;">[OK] Compiler: Pydroid_3</p>
                 <p style="color: #888;">[IDLE] Awaiting PKL...</p>
             </div>
         </aside>
     </div>
-
-    <section id="contact" style="width: 90%; max-width: 1100px; margin: 0 auto;">
-        <div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(112,0,255,0.05), rgba(0,209,255,0.05));">
-            <h2>Siap Berkolaborasi?</h2>
-            <p style="margin: 15px 0;">Mencari peluang Magang/Freelance untuk Agustus 2026.</p>
-            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
-                <a href="mailto:traintobusan50@gmail.com" style="background: var(--accent-blue); color: black; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">Email Me</a>
-                <a href="https://wa.me/6288270801832" style="border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">WhatsApp</a>
-            </div>
-        </div>
-    </section>
 
     <footer>
         &copy; 2026 Yusra | Built with Grit via Smartphone
     </footer>
 
     <script>
-        // Typing Effect
         const text = "DevSecOps Architect";
         let i = 0;
         function typeWriter() {
@@ -297,30 +244,15 @@
             }
         }
 
-        // Theme Toggle Logic
         function toggleMode() {
-            const isChecked = document.getElementById('checkbox').checked;
-            if (isChecked) {
-                document.body.classList.add('light-mode');
-                localStorage.setItem('theme', 'angelic');
-            } else {
-                document.body.classList.remove('light-mode');
-                localStorage.setItem('theme', 'hacking');
-            }
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', isLight ? 'angelic' : 'hacking');
         }
 
-        // Initialize on Load
         window.onload = () => {
             const currentTheme = localStorage.getItem('theme');
-            const checkbox = document.getElementById('checkbox');
-            
-            if (currentTheme === 'angelic') {
-                document.body.classList.add('light-mode');
-                if (checkbox) checkbox.checked = true;
-            } else {
-                document.body.classList.remove('light-mode');
-                if (checkbox) checkbox.checked = false;
-            }
+            if (currentTheme === 'angelic') document.body.classList.add('light-mode');
             typeWriter();
         };
     </script>
