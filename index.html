@@ -6,30 +6,43 @@
     <title>Portofolio | DevSecOps Journey</title>
     <style>
         :root {
-            --bg-color: #05050b;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --accent-blue: #00d1ff;
-            --accent-purple: #7000ff;
-            --border-glass: rgba(255, 255, 255, 0.1);
+         /* Mode Gelap (Hacking) */
+         --bg-color: #05050b;
+         --glass-bg: rgba(255, 255, 255, 0.03);
+         --accent-blue: #00d1ff;
+         --accent-purple: #7000ff;
+         --text-color: #e0e0e0;
+         --border-glass: rgba(255, 255, 255, 0.1);
+         --orb-1: rgba(112, 0, 255, 0.2);
+         --orb-2: rgba(0, 209, 255, 0.15);
         }
 
-        html { scroll-behavior: smooth; }
+      body.light-mode {
+         /* Mode Terang (Angelic) */
+         --bg-color: #f0f2f5;
+         --glass-bg: rgba(255, 255, 255, 0.7);
+         --accent-blue: #d4af37; /* Emas (Gold) */
+         --accent-purple: #f5f5f5; /* Putih bersih */
+         --text-color: #444;
+         --border-glass: rgba(212, 175, 55, 0.3);
+         --orb-1: rgba(212, 175, 55, 0.2); /* Liquid Gold */
+         --orb-2: rgba(255, 255, 255, 0.8); /* Liquid White */
+      }
 
-        body {
-            background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 209, 255, 0.15) 0%, transparent 40%);
-            color: #e0e0e0;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            margin: 0;
-            padding-top: 100px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+        html { scroll-behaviour: smooth; }
+     /* Update warna body agar mengikuti variabel */
+      body {
+         background-color: var(--bg-color);
+         color: var(--text-color);
+         transition: all 0.5s ease; /* Animasi perpindahan mode */
+      }
+
+        /* Pastikan elemen lain mengikuti variabel */
+        .card { background: var(--glass-bg); border-color: var(--border-glass); }
+        body.light-mode p[style*="#00ff41"] {
+            color: #b8860b !important; /* Hijau terminal jadi coklat emas tua agar terbaca */
         }
-
+        
         .main-dashboard {
             width: 90%;
             max-width: 1100px;
@@ -138,6 +151,9 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Hire Me</a>
             <a href="https://github.com/Yusraaaja" target="_blank" style="color: var(--accent-blue);">GitHub</a>
+            <button onclick="toggleMode()" style="background: none; border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 20px; cursor: pointer; padding: 2px 10px; font-size: 12px;">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Switch Theme
+            </button>
         </div>
     </nav>
 
@@ -266,6 +282,22 @@
         }
         window.onload = () => {
             document.querySelector("h1 span").innerHTML = "";
+            typeWriter();
+        };
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+    
+        // Simpan preferensi user agar tidak reset saat refresh
+        const mode = document.body.classList.contains('light-mode') ? 'angelic' : 'hacking';
+        localStorage.setItem('theme', mode);
+        }
+
+        // Cek tema saat halaman dimuat
+        window.onload = () => {
+            if(localStorage.getItem('theme') === 'angelic') {
+                document.body.classList.add('light-mode');
+        }
+            document.querySelector("h1 span").innerHTML = ""; 
             typeWriter();
         };
     </script>
