@@ -357,30 +357,35 @@ body.light-mode nav a[href*="github"] {
                 setTimeout(typeWriter, 150);
             }
         }
-        window.onload = () => {
-        const currentTheme = localStorage.getItem('theme');
-        const checkbox = document.getElementById('checkbox');
+        function toggleMode() {
+           const isChecked = document.getElementById('checkbox').checked;
+           if (isChecked) {
+               document.body.classList.add('light-mode');
+               localStorage.setItem('theme', 'angelic'); // Simpan status terang
+           } else {
+               document.body.classList.remove('light-mode');
+               localStorage.setItem('theme', 'hacking'); // Simpan status gelap
+           }
+        }
+
+window.onload = () => {
+    const currentTheme = localStorage.getItem('theme');
+    const checkbox = document.getElementById('checkbox');
     
-        // 1. Cek apakah tema yang tersimpan adalah 'angelic'
-            if (currentTheme === 'angelic') {
-                document.body.classList.add('light-mode');
-        // 2. Pastikan checkbox tercentang (posisi kanan/matahari)
-            if (checkbox) {
-                checkbox.checked = true;
-            }
-            } else {
-        // 3. Jika tema gelap, pastikan checkbox tidak tercentang
-                document.body.classList.remove('light-mode');
-                if (checkbox) {
-                    checkbox.checked = false;
-                }
-            }
+    // Default: Jika tidak ada tema tersimpan, gunakan hacking (gelap)
+    if (currentTheme === 'angelic') {
+        document.body.classList.add('light-mode');
+        if (checkbox) checkbox.checked = true;
+    } else {
+        document.body.classList.remove('light-mode');
+        if (checkbox) checkbox.checked = false;
+    }
     
-        // Jalankan fungsi typewriter atau fungsi lain jika ada
-            if (typeof typeWriter === "function") {
-               typeWriter();
-            }
-        };
+    // Jalankan typewriter kamu di sini jika ada
+    if (typeof typeWriter === "function") {
+        typeWriter();
+    }
+};
     </script>
 </body>
 </html>
