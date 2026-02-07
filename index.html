@@ -45,7 +45,6 @@
 
         /* Container Utama ala Dashboard Kezabank */
         .main-dashboard {
-            id="home"
             width: 90%;
             max-width: 1100px;
             background: var(--glass-bg);
@@ -58,8 +57,8 @@
             grid-template-columns: 2fr 1fr;
             gap: 30px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
             <section id="projects" style="margin-top: 40px; grid-column: span 2;">
-            id="projects"
     <h2 style="color: var(--accent-blue); margin-bottom: 20px;">$ ls ./active-projects</h2>
 <section id="contact" style="margin-top: 60px; grid-column: span 2; text-align: center; padding-bottom: 50px;">
     <div class="card" style="background: linear-gradient(135deg, rgba(112,0,255,0.1), rgba(0,209,255,0.1));">
@@ -89,8 +88,15 @@
         </div>
 
     </div>
+    <div class="main-dashboard" id="home">
+    </div>
+    <section id="projects" style="margin-top: 40px;">
+    <h2>$ ls ./active-projects</h2>
+    </section>
+
+<section id="contact" style="margin-top: 60px;">
+    </section>
 </section>
-        }
 
         /* Card Skill & Progress */
         .card {
