@@ -24,33 +24,38 @@
             /* Mode Terang - Angelic Liquid Gold */
             --bg-color: #f8f9fa;
             --glass-bg: rgba(255, 255, 255, 0.7);
-            --accent-blue: #d4af37; /* Gold */
+            --accent-blue: #d4af37;
             --accent-purple: #b8860b;
             --text-primary: #2c3e50;
             --text-secondary: #5d6d7e;
             --border-glass: rgba(212, 175, 55, 0.3);
-            --orb-1: rgba(212, 175, 55, 0.25); /* Liquid Gold */
+            --orb-1: rgba(212, 175, 55, 0.25);
             --orb-2: rgba(255, 255, 255, 0.9);
             --terminal-green: #b8860b;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
+        
         body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            transition: all 0.5s ease;
             overflow-x: hidden;
-            padding: 0 15px; /* Memberi jarak aman di layar HP agar tidak mepet */
+            padding: 0 20px; /* Jarak aman agar tidak mepet layar */
+            font-family: 'Segoe UI', sans-serif;
         }
 
         /* --- Background Effects --- */
         .bg-glow {
-            pointer-events: none; /* PENTING: Supaya bola cahaya tidak bisa di-klik/menghalangi tombol */
-position: fixed;
-width: 500px;
-height: 500px;
-border-radius: 50%;
-filter: blur(120px);
-z-index: -1;
-transition: all 0.5s ease;
+            pointer-events: none;
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            transition: all 0.5s ease;
         }
 
         .orb-1 { top: -100px; left: -100px; background: var(--orb-1); }
@@ -79,7 +84,7 @@ transition: all 0.5s ease;
         nav a {
             text-decoration: none;
             color: var(--text-primary);
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             transition: 0.3s;
         }
@@ -90,8 +95,8 @@ transition: all 0.5s ease;
             display: flex;
             align-items: center;
             background: #222;
-            width: 65px;
-            height: 32px;
+            width: 60px;
+            height: 28px;
             border-radius: 50px;
             padding: 5px;
             position: relative;
@@ -100,42 +105,34 @@ transition: all 0.5s ease;
         }
         body.light-mode .switch-container { background: #d4af37; }
         .toggle-circle {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             background: white;
             border-radius: 50%;
             position: absolute;
             left: 5px;
             transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        body.light-mode .toggle-circle { transform: translateX(31px); }
-        .switch-container i { font-size: 12px; color: #f1c40f; }
+        body.light-mode .toggle-circle { transform: translateX(30px); }
+        .switch-container i { font-size: 10px; color: #f1c40f; }
         .fa-moon { margin-left: auto; }
         .fa-sun { margin-right: auto; }
 
         /* --- Main Layout --- */
         .dashboard {
-            width: 95%; /* Tidak 100% agar ada ruang di kiri-kanan */
+            width: 100%;
             max-width: 1100px;
-            margin: 20px auto; /* Menengahkan dashboard dengan jarak atas-bawah */
+            margin: 20px auto;
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 25px;
             position: relative;
-            z-index: 10; /* Memastikan konten berada di atas bola cahaya latar */
+            z-index: 10;
         }
 
-        @media (max-width: 768px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-                width: 100%;
-                padding: 10px;
-            }
+        @media (max-width: 992px) {
+            .dashboard { grid-template-columns: 1fr; }
         }
 
         .card {
@@ -149,21 +146,22 @@ transition: all 0.5s ease;
         }
         .card:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
 
-        /* --- Content Components --- */
+        /* --- Components --- */
         .badge {
+            display: inline-block;
             background: rgba(0, 209, 255, 0.1);
             color: var(--accent-blue);
             padding: 5px 15px;
             border-radius: 50px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
             border: 1px solid var(--accent-blue);
         }
-        h1 { font-size: 3rem; line-height: 1.1; margin: 20px 0; }
+        h1 { font-size: 2.5rem; line-height: 1.1; margin: 20px 0; }
         
         .progress-container {
             background: rgba(0,0,0,0.2);
-            height: 12px;
+            height: 10px;
             border-radius: 20px;
             margin: 15px 0;
             overflow: hidden;
@@ -185,14 +183,13 @@ transition: all 0.5s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             transition: 0.3s;
         }
-        .stack-item i { font-size: 30px; transition: 0.3s; }
-        .stack-item span { font-size: 11px; font-weight: bold; color: var(--text-secondary); }
+        .stack-item i { font-size: 28px; }
+        .stack-item span { font-size: 10px; font-weight: bold; color: var(--text-secondary); }
         .stack-item:hover i { transform: scale(1.2); filter: drop-shadow(0 0 10px currentColor); }
         
-        /* Icon Colors */
         .fa-python { color: #3776ab; }
         .fa-linux { color: #fcc624; }
         .fa-terminal { color: var(--terminal-green); }
@@ -200,23 +197,17 @@ transition: all 0.5s ease;
         .fa-network-wired { color: #7000ff; }
         .fa-cloud { color: #00d1ff; }
 
-        /* Warna khusus Sosmed saat di-hover */
+        /* --- Social Links (Centered) --- */
         .social-link {
             font-size: 24px;
             color: var(--text-secondary);
             transition: 0.3s;
             text-decoration: none;
         }
-
-        .fa-facebook:hover { color: #1877F2; filter: drop-shadow(0 0 10px #1877F2); }
-        .fa-instagram:hover { color: #E4405F; filter: drop-shadow(0 0 10px #E4405F); }
-        .fa-linkedin:hover { color: #0A66C2; filter: drop-shadow(0 0 10px #0A66C2); }
-        .fa-tiktok:hover { color: #010101; filter: drop-shadow(0 0 10px #ff0050); }
-
-        /* Jika di Mode Terang, pastikan tetap terlihat mewah */
-        body.light-mode .social-link:hover {
-            filter: drop-shadow(0 0 5px var(--accent-blue));
-        }
+        .fa-facebook:hover { color: #1877F2; filter: drop-shadow(0 0 8px #1877F2); }
+        .fa-instagram:hover { color: #E4405F; filter: drop-shadow(0 0 8px #E4405F); }
+        .fa-linkedin:hover { color: #0A66C2; filter: drop-shadow(0 0 8px #0A66C2); }
+        .fa-tiktok:hover { color: #010101; filter: drop-shadow(0 0 8px #ff0050); }
 
         /* --- Hire Me Section --- */
         .hire-section {
@@ -230,7 +221,7 @@ transition: all 0.5s ease;
         }
         .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
         .btn {
-            padding: 15px 35px;
+            padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
@@ -240,20 +231,22 @@ transition: all 0.5s ease;
         .btn-outline { border: 2px solid var(--accent-blue); color: var(--accent-blue); }
         .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-blue); }
 
-        footer { text-align: center; padding: 40px; font-size: 13px; opacity: 0.5; }
+        footer { text-align: center; padding: 40px; font-size: 12px; opacity: 0.5; }
     </style>
 </head>
 <body>
 
     <div class="bg-glow orb-1"></div>
     <div class="bg-glow orb-2"></div>
+    
     <div id="home" style="position: absolute; top: 0;"></div>
+
     <nav>
         <div class="nav-capsule">
-            <a href="#home">HOME</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="#hire">HIRE ME</a>
-            <a href="https://github.com/Yusraaaja" target="_blank" style="color: var(--accent-blue)!important;">GITHUB</a>
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#hire">Hire Me</a>
+            <a href="https://github.com/Yusraaaja" target="_blank" style="color: var(--accent-blue)!important;">GitHub</a>
             
             <div class="switch-container" onclick="toggleMode()">
                 <div class="toggle-circle"></div>
@@ -261,8 +254,8 @@ transition: all 0.5s ease;
                 <i class="fas fa-moon"></i>
             </div>
         </div>
-    </nav
- 
+    </nav>
+
     <div class="dashboard">
         <main>
             <section style="margin-bottom: 40px;">
@@ -274,7 +267,7 @@ transition: all 0.5s ease;
             </section>
 
             <div class="card" style="font-family: 'Courier New', Courier, monospace;">
-                <h3 style="margin-bottom: 15px; font-size: 16px;">$ python3 automation.py</h3>
+                <h3 style="margin-bottom: 15px; font-size: 15px;">$ python3 automation.py</h3>
                 <code style="color: var(--terminal-green); line-height: 1.6; font-size: 14px;">
                     [+] Environment: Smartphone (Pydroid 3)<br>
                     [+] Scanning local networking...<br>
@@ -284,7 +277,7 @@ transition: all 0.5s ease;
             </div>
 
             <section id="projects">
-                <h2 style="margin: 30px 0; color: var(--accent-blue);">PROJECTS</h2>
+                <h2 style="margin: 30px 0; color: var(--accent-blue);">Projects</h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                     <div class="card">
                         <span style="font-size: 11px; color: var(--accent-purple);">#Python #Automation</span>
@@ -322,22 +315,19 @@ transition: all 0.5s ease;
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" style="text-align: center;">
                 <h3>Social Networking</h3>
-                <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 15px;">Mari terhubung dan berkolaborasi.</p>
-                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 20px;">Mari terhubung dan berkolaborasi.</p>
+                <div style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap;">
                     <a href="https://facebook.com/akublanja" target="_blank" class="social-link">
                         <i class="fab fa-facebook"></i>
                     </a>
-        
                     <a href="https://instagram.com/akublanjaofficial" target="_blank" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
-        
                     <a href="https://linkedin.com/in/Muhamad Yusra Agam" target="_blank" class="social-link">
                         <i class="fab fa-linkedin"></i>
                     </a>
-
                     <a href="https://tiktok.com/@akublanjaofficial" target="_blank" class="social-link">
                         <i class="fab fa-tiktok"></i>
                     </a>
@@ -354,9 +344,8 @@ transition: all 0.5s ease;
     </div>
 
     <section id="hire" class="hire-section">
-        <h2 style="margin: 30px 0; color: var(--accent-blue);">Siap Berkolaborasi?</h2>
-        <h2 style="margin: 30px 0; color: var(--accent-blue);">HIRE ME</h2>
-        <p style="margin: 15px 0; color: var(--text-secondary);">Saya tersedia untuk peluang Magang atau Kerja Sementara mulai Agustus 2026.</p>
+        <h2 style="margin-bottom: 10px; color: var(--accent-blue);">SIAP BERKOLABORASI?</h2>
+        <p style="margin: 15px 0; color: var(--text-secondary);">Saya bersedia untuk peluang Magang atau Kerja mulai Agustus 2026.</p>
         <div class="btn-group">
             <a href="mailto:traintobusan50@gmail.com" class="btn btn-primary">Email Me</a>
             <a href="https://wa.me/6288270801832" class="btn btn-outline">WhatsApp</a>
@@ -368,7 +357,6 @@ transition: all 0.5s ease;
     </footer>
 
     <script>
-        // Typing Effect
         const text = "DevSecOps Architect";
         let i = 0;
         function typeWriter() {
@@ -379,7 +367,6 @@ transition: all 0.5s ease;
             }
         }
 
-        // Theme Toggle
         function toggleMode() {
             document.body.classList.toggle('light-mode');
             const isLight = document.body.classList.contains('light-mode');
