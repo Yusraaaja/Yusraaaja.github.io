@@ -39,9 +39,12 @@
 
         /* Pastikan elemen lain mengikuti variabel */
         .card { background: var(--glass-bg); border-color: var(--border-glass); }
-        body.light-mode p[style*="#00ff41"] {
-            color: #b8860b !important; /* Hijau terminal jadi coklat emas tua agar terbaca */
-        }
+        /* Update bagian ini di sekitar baris 42 */
+body.light-mode p[style*="#00ff41"], 
+body.light-mode code[style*="#00ff41"], 
+body.light-mode span[style*="#00ff41"] {
+    color: #b8860b !important; /* Mengubah hijau jadi emas tua agar kontras */
+}
         /* Container Saklar */
 .theme-switch-wrapper {
     display: flex;
