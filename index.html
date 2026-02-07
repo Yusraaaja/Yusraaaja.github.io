@@ -13,13 +13,7 @@
             --border-glass: rgba(255, 255, 255, 0.1);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-        a:hover {
-            color: var(--accent-blue) !important;
-            text-shadow: 0 0 10px var(--accent-blue);
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-color);
@@ -29,27 +23,18 @@
             color: #e0e0e0;
             font-family: 'Inter', 'Segoe UI', sans-serif;
             margin: 0;
+            padding-top: 100px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
-<nav style="position: fixed; top: 20px; width: 100%; display: flex; justify-content: center; z-index: 100;">
-    <div class="card" style="padding: 10px 30px; border-radius: 50px; display: flex; gap: 20px; backdrop-filter: blur(20px);">
-        <a href="#home" style="color: white; text-decoration: none; font-size: 14px;">Home</a>
-        <a href="#projects" style="color: white; text-decoration: none; font-size: 14px;">Projects</a>
-        <a href="https://github.com/Yusraaaja" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-size: 14px;">GitHub</a>
-    </div>
-</nav>
-
-        /* Container Utama ala Dashboard Kezabank */
         .main-dashboard {
             width: 90%;
             max-width: 1100px;
             background: var(--glass-bg);
             backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--border-glass);
             border-radius: 40px;
             padding: 40px;
@@ -58,47 +43,7 @@
             gap: 30px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
-            <section id="projects" style="margin-top: 40px; grid-column: span 2;">
-    <h2 style="color: var(--accent-blue); margin-bottom: 20px;">$ ls ./active-projects</h2>
-<section id="contact" style="margin-top: 60px; grid-column: span 2; text-align: center; padding-bottom: 50px;">
-    <div class="card" style="background: linear-gradient(135deg, rgba(112,0,255,0.1), rgba(0,209,255,0.1));">
-        <h2>Siap Berkolaborasi?</h2>
-        <p>Saya sedang mencari peluang Magang atau Freelance untuk periode Agustus 2026.</p>
-        <div style="margin-top: 25px;">
-            <a href="mailto:traintobusan50@gmail.com" style="background: var(--accent-blue); color: black; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-right: 15px; display: inline-block;">Email Me</a>
-            <a href="https://wa.me/088270801832" style="border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block;">WhatsApp</a>
-        </div>
-    </div>
-</nav>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-        
-        <div class="card" style="cursor: pointer;">
-            <span style="font-size: 0.8rem; color: var(--accent-purple);">#Python #Automation</span>
-            <h4>Auto-Reporting Script</h4>
-            <p style="font-size: 0.9rem;">Otomasi laporan harian sekolah yang dibangun via Pydroid 3.</p>
-            <div style="margin-top: 10px; font-size: 0.8rem; color: var(--accent-blue);">View Code -></div>
-        </div>
-
-        <div class="card" style="cursor: pointer;">
-            <span style="font-size: 0.8rem; color: var(--accent-purple);">#CyberSec #Termux</span>
-            <h4>Wireless Scanner</h4>
-            <p style="font-size: 0.9rem;">Eksperimen hardware hacking menggunakan perangkat mobile.</p>
-            <div style="margin-top: 10px; font-size: 0.8rem; color: var(--accent-blue);">Audit Log -></div>
-        </div>
-
-    </div>
-    <div class="main-dashboard" id="home">
-    </div>
-    <section id="projects" style="margin-top: 40px;">
-    <h2>$ ls ./active-projects</h2>
-    </section>
-
-<section id="contact" style="margin-top: 60px;">
-    </section>
-</section>
-
-        /* Card Skill & Progress */
         .card {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 25px;
@@ -107,10 +52,7 @@
             transition: 0.3s ease;
         }
 
-        .card:hover {
-            border-color: var(--accent-blue);
-            transform: translateY(-5px);
-        }
+        .card:hover { border-color: var(--accent-blue); transform: translateY(-5px); }
 
         .status-badge {
             display: inline-block;
@@ -123,50 +65,54 @@
             border: 1px solid var(--accent-blue);
         }
 
-        /* Progress Bar ala Neumorphism */
         .progress-container {
             background: rgba(0, 0, 0, 0.3);
             height: 10px;
             border-radius: 10px;
             margin-top: 15px;
             overflow: hidden;
-            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5);
         }
 
         .progress-bar {
             background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
             height: 100%;
-            width: 60%; /* Progress tabungan T480 */
+            width: 60%;
             box-shadow: 0 0 15px var(--accent-blue);
         }
 
-        h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        p { color: #888; line-height: 1.6; }
+        nav a { color: white; text-decoration: none; font-size: 14px; transition: 0.3s; }
+        nav a:hover { color: var(--accent-blue); text-shadow: 0 0 10px var(--accent-blue); }
+
+        @media (max-width: 768px) {
+            .main-dashboard { grid-template-columns: 1fr; padding: 20px; }
+        }
     </style>
 </head>
 <body>
-    <nav style="position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 0;">
-    <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); width: fit-content; margin: 0 auto; padding: 10px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); display: flex; gap: 25px;">
-        <a href="#home" style="color: white; text-decoration: none; font-size: 14px; font-weight: 500;">Home</a>
-        <a href="#projects" style="color: white; text-decoration: none; font-size: 14px; font-weight: 500;">Projects</a>
-        <a href="#contact" style="color: var(--accent-blue); text-decoration: none; font-size: 14px; font-weight: 700;">Hire Me</a>
-    </div>
-</nav>
 
-    <div style="position: fixed; top: -10%; left: -10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(112,0,255,0.2) 0%, transparent 70%); filter: blur(50px); z-index: -1;"></div>
-<div style="position: fixed; bottom: 10%; right: -5%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,209,255,0.15) 0%, transparent 70%); filter: blur(50px); z-index: -1;"></div>
-    
-    <div class="circle" style="width: 400px; height: 400px; top: -150px; left: -150px; background: rgba(112, 0, 255, 0.3); filter: blur(100px); position: fixed; border-radius: 50%; z-index: -1;"></div>
-<div class="circle" style="width: 350px; height: 350px; bottom: -100px; right: -100px; background: rgba(0, 209, 255, 0.2); filter: blur(100px); position: fixed; border-radius: 50%; z-index: -1;"></div>
+    <nav style="position: fixed; top: 20px; width: 100%; display: flex; justify-content: center; z-index: 1000;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); padding: 10px 30px; border-radius: 50px; border: 1px solid var(--border-glass); display: flex; gap: 25px;">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Hire Me</a>
+            <a href="https://github.com/Yusraaaja" target="_blank" style="color: var(--accent-blue);">GitHub</a>
+        </div>
+    </nav>
+
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden;">
+        <div style="position: absolute; top: -10%; left: -10%; width: 400px; height: 400px; background: rgba(112,0,255,0.2); filter: blur(100px); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: 10%; right: -5%; width: 300px; height: 300px; background: rgba(0,209,255,0.15); filter: blur(100px); border-radius: 50%;"></div>
+    </div>
+
     <div class="main-dashboard" id="home">
         <section>
             <span class="status-badge">REDTEAM AGRESSIVE | LEARNING</span>
-            <h1>Evolution to <span style="color: var(--accent-blue);">DevSecOps</span></h1>
+            <h1>Evolution to <br><span style="color: var(--accent-blue);"></span></h1>
             <p>Berawal dari Python Automation di layar smartphone, menuju pengakuan di komunitas tech dengan grit tanpa batas.</p>
             
             <div style="margin-top: 40px;">
                 <div class="card">
-                    <h3 style="margin-top:0;">$ python3 automation_project.py</h3>
+                    <h3 style="margin-top:0; font-family: monospace;">$ python3 automation.py</h3>
                     <code style="color: #00ff41;">[+] Scanning vulnerabilities...<br>[+] Deploying backend cloud...<br>[+] Status: Success</code>
                 </div>
             </div>
@@ -175,41 +121,68 @@
         <aside>
             <div class="card">
                 <h3>Hardware Goal</h3>
-                <p>Lenovo ThinkPad T480</p>
+                <p>ThinkPad T480</p>
                 <div class="progress-container">
                     <div class="progress-bar"></div>
                 </div>
-                <p style="font-size: 12px; text-align: right; margin-top: 8px;">60% Menuju Maret 2026</p>
+                <p style="font-size: 12px; text-align: right; margin-top: 8px;">0% Menuju Maret 2026</p>
             </div>
-
             <div class="card" style="margin-top: 20px;">
                 <h3>Current Focus</h3>
-                <ul style="padding-left: 20px; font-size: 14px;">
+                <ul style="padding-left: 20px; font-size: 14px; color: #888;">
                     <li>Python Automation</li>
                     <li>Malware Analysis</li>
                     <li>Hardware Hacking</li>
                 </ul>
             </div>
         </aside>
-    </div>
-<script>
-    const text = "DevSecOps Architect";
-    let i = 0;
-    
-    function typeWriter() {
-        if (i < text.length) {
-            // Kita arahkan ke span di dalam h1
-            document.querySelector("h1 span").innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 150); // Kecepatan mengetik (ms)
-        }
-    }
 
-    // PENTING: Kosongkan dulu isi span di HTML agar tidak double
-    window.onload = function() {
-        document.querySelector("h1 span").innerHTML = ""; 
-        typeWriter();
-    };
-</script>
+        <section id="projects" style="grid-column: span 2; margin-top: 40px;">
+            <h2 style="color: var(--accent-blue);">$ ls ./active-projects</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div class="card">
+                    <span style="font-size: 0.8rem; color: var(--accent-purple);">#Python #Automation</span>
+                    <h4>Auto-Reporting Script</h4>
+                    <p style="font-size: 0.9rem; color: #888;">Otomasi laporan harian sekolah via Pydroid 3.</p>
+                </div>
+                <div class="card">
+                    <span style="font-size: 0.8rem; color: var(--accent-purple);">#CyberSec #Termux</span>
+                    <h4>Wireless Scanner</h4>
+                    <p style="font-size: 0.9rem; color: #888;">Eksperimen hardware hacking mobile device.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="grid-column: span 2; margin-top: 60px; text-align: center;">
+            <div class="card" style="background: linear-gradient(135deg, rgba(112,0,255,0.05), rgba(0,209,255,0.05));">
+                <h2>Siap Berkolaborasi?</h2>
+                <p>Mencari peluang Magang/Freelance untuk Agustus 2026.</p>
+                <div style="margin-top: 25px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <a href="mailto:traintobusan50@gmail.com" style="background: var(--accent-blue); color: black; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">Email Me</a>
+                    <a href="https://wa.me/6288270801832" style="border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">WhatsApp</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer style="margin: 50px 0; color: #555; font-size: 0.8rem;">
+        &copy; 2026 Yusra | Built with Grit via Smartphone
+    </footer>
+
+    <script>
+        const text = "DevSecOps Architect";
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.querySelector("h1 span").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            }
+        }
+        window.onload = () => {
+            document.querySelector("h1 span").innerHTML = "";
+            typeWriter();
+        };
+    </script>
 </body>
 </html>
