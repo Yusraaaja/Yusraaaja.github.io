@@ -34,7 +34,7 @@
       body {
          background-color: var(--bg-color);
          color: var(--text-color);
-         transition: all 0.5s ease; /* Animasi perpindahan mode */
+         transition: all 0.8s ease; /* Animasi perpindahan mode */
       }
 
         /* Pastikan elemen lain mengikuti variabel */
@@ -42,7 +42,67 @@
         body.light-mode p[style*="#00ff41"] {
             color: #b8860b !important; /* Hijau terminal jadi coklat emas tua agar terbaca */
         }
-        
+        /* Container Saklar */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input { display: none; }
+
+/* Background Saklar */
+.slider {
+    background-color: #333;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+    border: 1px solid var(--border-glass);
+}
+
+/* Lingkaran Putih di Dalam */
+.slider:before {
+    background-color: white;
+    bottom: 4px;
+    content: "";
+    height: 24px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 14px;
+    color: #333;
+    content: "\f186"; /* Ikon Bulan */
+}
+
+/* Saat Aktif (Light Mode) */
+input:checked + .slider {
+    background: linear-gradient(135deg, #d4af37, #fff);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+    content: "\f185"; /* Ikon Matahari */
+    color: #d4af37;
+}
+
         .main-dashboard {
             width: 90%;
             max-width: 1100px;
@@ -144,16 +204,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-
+<div class="circle" style="width: 400px; height: 400px; top: -150px; left: -150px; background: var(--orb-1); filter: blur(100px); position: fixed; border-radius: 50%; z-index: -1;"></div>
+<div class="circle" style="width: 350px; height: 350px; bottom: -100px; right: -100px; background: var(--orb-2); filter: blur(100px); position: fixed; border-radius: 50%; z-index: -1;"></div>
     <nav style="position: fixed; top: 20px; width: 100%; display: flex; justify-content: center; z-index: 1000;">
         <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); padding: 10px 30px; border-radius: 50px; border: 1px solid var(--border-glass); display: flex; gap: 25px;">
             <a href="#home">Home</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Hire Me</a>
             <a href="https://github.com/Yusraaaja" target="_blank" style="color: var(--accent-blue);">GitHub</a>
-            <button onclick="toggleMode()" style="background: none; border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 20px; cursor: pointer; padding: 2px 10px; font-size: 12px;">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> Switch Theme
-            </button>
+           <div class="theme-switch-wrapper">
+               <label class="theme-switch" for="checkbox">
+                   <input type="checkbox" id="checkbox" onclick="toggleMode()">
+                   <div class="slider"></div>
+               </label>
+           </div>
         </div>
     </nav>
 
