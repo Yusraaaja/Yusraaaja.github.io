@@ -195,6 +195,24 @@
         .fa-network-wired { color: #7000ff; }
         .fa-cloud { color: #00d1ff; }
 
+/* Warna khusus Sosmed saat di-hover */
+.social-link {
+    font-size: 24px;
+    color: var(--text-secondary);
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.fa-facebook:hover { color: #1877F2; filter: drop-shadow(0 0 10px #1877F2); }
+.fa-instagram:hover { color: #E4405F; filter: drop-shadow(0 0 10px #E4405F); }
+.fa-linkedin:hover { color: #0A66C2; filter: drop-shadow(0 0 10px #0A66C2); }
+.fa-tiktok:hover { color: #010101; filter: drop-shadow(0 0 10px #ff0050); }
+
+/* Jika di Mode Terang, pastikan tetap terlihat mewah */
+body.light-mode .social-link:hover {
+    filter: drop-shadow(0 0 5px var(--accent-blue));
+}
+
         /* --- Hire Me Section --- */
         .hire-section {
             text-align: center;
@@ -225,20 +243,22 @@
     <div class="bg-glow orb-1"></div>
     <div class="bg-glow orb-2"></div>
 
-    <nav>
-        <div class="nav-capsule">
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#hire">Hire Me</a>
-            <a href="https://github.com/Yusraaaja" target="_blank" style="color: var(--accent-blue)!important;">GitHub</a>
-            
-            <div class="switch-container" onclick="toggleMode()">
-                <div class="toggle-circle"></div>
-                <i class="fas fa-sun"></i>
-                <i class="fas fa-moon"></i>
-            </div>
-        </div>
-    </nav>
+<div class="nav-capsule">
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <div style="display: flex; gap: 10px; border-right: 1px solid var(--border-glass); padding-right: 15px;">
+        <a href="https://github.com/Yusraaaja" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/Muhamad Yusra Agam" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://instagram.com/akublanjaofficial" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    
+    <div class="switch-container" onclick="toggleMode()">
+        <div class="toggle-circle"></div>
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    </div>
+</div>
+
 
     <div class="dashboard" id="home">
         <main>
@@ -261,7 +281,7 @@
             </div>
 
             <section id="projects">
-                <h2 style="margin: 30px 0; color: var(--accent-blue);">Projects</h2>
+                <h2 style="margin: 30px 0; color: var(--accent-blue);">PROJECTS</h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                     <div class="card">
                         <span style="font-size: 11px; color: var(--accent-purple);">#Python #Automation</span>
@@ -299,6 +319,28 @@
                 </div>
             </div>
 
+<div class="card">
+    <h3>Social Networking</h3>
+    <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 15px;">Mari terhubung dan berkolaborasi.</p>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <a href="https://facebook.com/username_kamu" target="_blank" class="social-link">
+            <i class="fab fa-facebook"></i>
+        </a>
+        
+        <a href="https://instagram.com/username_kamu" target="_blank" class="social-link">
+            <i class="fab fa-instagram"></i>
+        </a>
+        
+        <a href="https://linkedin.com/in/username_kamu" target="_blank" class="social-link">
+            <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a href="https://tiktok.com/@username_kamu" target="_blank" class="social-link">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+</div>
+
             <div class="card" style="font-family: monospace; font-size: 12px;">
                 <h4 style="color: var(--accent-blue); margin-bottom: 10px;">> System_Log</h4>
                 <p style="color: var(--terminal-green);">[OK] Class: 11 SMK RPL</p>
@@ -310,7 +352,7 @@
 
     <section id="hire" class="hire-section">
         <h2 style="margin: 30px 0; color: var(--accent-blue);">Siap Berkolaborasi?</h2>
-        <h2 style="margin: 30px 0; color: var(--accent-blue);">Hire Me</h2>
+        <h2 style="margin: 30px 0; color: var(--accent-blue);">HIRE ME</h2>
         <p style="margin: 15px 0; color: var(--text-secondary);">Saya tersedia untuk peluang Magang atau Kerja Sementara mulai Agustus 2026.</p>
         <div class="btn-group">
             <a href="mailto:traintobusan50@gmail.com" class="btn btn-primary">Email Me</a>
