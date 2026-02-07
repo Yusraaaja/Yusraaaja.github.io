@@ -16,6 +16,16 @@
          --orb-1: rgba(112, 0, 255, 0.2);
          --orb-2: rgba(0, 209, 255, 0.15);
         }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden; /* Menghapus scroll horizontal dan bar vertikal aneh */
+    width: 100%;
+}
 
       body.light-mode {
          /* Mode Terang (Angelic) */
@@ -131,14 +141,16 @@ body.light-mode nav a[href*="github"] {
             align-items: start;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 25px;
-            padding: 20px;
-            border: 1px solid var(--border-glass);
-            transition: 0.3s ease;
-        }
-
+.card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); /* Dukungan browser mobile */
+    box-shadow: none; /* Hilangkan shadow jika terlihat kotor di HP */
+    margin-bottom: 20px;
+    width: 100%; /* Pastikan card tidak keluar jalur */
+}
+        
         .card:hover { border-color: var(--accent-blue); transform: translateY(-5px); }
 
         .status-badge {
@@ -166,6 +178,28 @@ body.light-mode nav a[href*="github"] {
             width: 60%;
             box-shadow: 0 0 15px var(--accent-blue);
         }
+nav {
+    position: sticky; /* Ubah dari fixed ke sticky agar tidak menumpuk tulisan */
+    top: 0;
+    width: 100%;
+    padding: 15px 10px;
+    background: var(--bg-color); /* Berikan background solid/semi-transparan agar tulisan di bawahnya tidak tembus */
+    z-index: 1000;
+}
+
+nav .container { /* Pastikan elemen di dalam nav menggunakan flexbox */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Sesuaikan ukuran menu agar tidak terlalu besar di HP */
+nav a {
+    font-size: 14px;
+    margin: 0 5px;
+}
 
         nav a { color: white; text-decoration: none; font-size: 14px; transition: 0.3s; }
         nav a:hover { color: var(--accent-blue); text-shadow: 0 0 10px var(--accent-blue); }
@@ -212,6 +246,14 @@ body.light-mode nav a[href*="github"] {
     }
 }
 
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 12px;
+    color: var(--text-color);
+    opacity: 0.6;
+}
        
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -343,7 +385,7 @@ body.light-mode nav a[href*="github"] {
         </section>
     </div>
 
-    <footer style="margin: 50px 0; color: #555; font-size: 0.8rem;">
+    <footer>
         &copy; 2026 Yusra | Built with Grit via Smartphone
     </footer>
 
