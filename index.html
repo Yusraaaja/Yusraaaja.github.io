@@ -37,24 +37,17 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            transition: all 0.5s ease;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
-            min-height: 100vh;
+            padding: 0 15px; /* Memberi jarak aman di layar HP agar tidak mepet */
         }
 
         /* --- Background Effects --- */
         .bg-glow {
+            pointer-events: none; /* PENTING: Supaya bola cahaya tidak bisa di-klik/menghalangi tombol */
             position: fixed;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            filter: blur(120px);
             z-index: -1;
-            transition: all 0.8s ease;
         }
+
         .orb-1 { top: -100px; left: -100px; background: var(--orb-1); }
         .orb-2 { bottom: -100px; right: -100px; background: var(--orb-2); }
 
@@ -122,15 +115,22 @@
 
         /* --- Main Layout --- */
         .dashboard {
-            width: 90%;
-            max-width: 1200px;
-            margin: 40px auto;
+            width: 95%; /* Tidak 100% agar ada ruang di kiri-kanan */
+            max-width: 1100px;
+            margin: 20px auto; /* Menengahkan dashboard dengan jarak atas-bawah */
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 30px;
+            gap: 25px;
+            position: relative;
+            z-index: 10; /* Memastikan konten berada di atas bola cahaya latar */
         }
-        @media (max-width: 992px) {
-            .dashboard { grid-template-columns: 1fr; }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                width: 100%;
+                padding: 10px;
+            }
         }
 
         .card {
@@ -242,8 +242,8 @@
 
     <div class="bg-glow orb-1"></div>
     <div class="bg-glow orb-2"></div>
-
-<nav>
+    <div id="home" style="position: absolute; top: 0;"></div>
+    <nav>
         <div class="nav-capsule">
             <a href="#home">HOME</a>
             <a href="#projects">PROJECTS</a>
@@ -258,7 +258,7 @@
         </div>
     </nav
  
-    <div class="dashboard" id="home">
+    <div class="dashboard">
         <main>
             <section style="margin-bottom: 40px;">
                 <span class="badge">REDTEAM AGRESSIVE | TECH LEARNER</span>
