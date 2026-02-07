@@ -86,8 +86,31 @@
         @media (max-width: 768px) {
             .main-dashboard { grid-template-columns: 1fr; padding: 20px; }
         }
+        
+        .stack-icon {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+        .stack-icon:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        /* Efek Glow Spesifik Warna */
+        .stack-icon:hover .fa-python { color: #3776ab; filter: drop-shadow(0 0 10px #3776ab); }
+        .stack-icon:hover .fa-linux { color: #fcc624; filter: drop-shadow(0 0 10px #fcc624); }
+        .stack-icon:hover .fa-terminal { color: #00ff41; filter: drop-shadow(0 0 10px #00ff41); }
+        .stack-icon:hover .fa-git-alt { color: #f05032; filter: drop-shadow(0 0 10px #f05032); }
+        .stack-icon:hover .fa-network-wired { color: var(--accent-purple); filter: drop-shadow(0 0 10px var(--accent-purple)); }
+        .stack-icon:hover .fa-cloud { color: var(--accent-blue); filter: drop-shadow(0 0 10px var(--accent-blue)); }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
@@ -137,34 +160,42 @@
                 </ul>
             </div>
             <div class="card" style="margin-top: 20px;">
-                 <h3>Learning Stack</h3>
-                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; margin-top: 15px;">
-                     <div title="Python">
-                         <i class="fa-brands fa-python" style="font-size: 24px; color: var(--accent-blue);"></i>
-                         <p style="font-size: 10px; margin-top: 5px;">Python</p>
-                     </div>
-                     <div title="Linux">
-                         <i class="fa-brands fa-linux" style="font-size: 24px; color: white;"></i>
-                         <p style="font-size: 10px; margin-top: 5px;">Linux</p>
-                     </div>
-                     <div title="Terminal">
-                         <i class="fa-solid fa-terminal" style="font-size: 24px; color: #00ff41;"></i>
-                         <p style="font-size: 10px; margin-top: 5px;">Bash</p>
-                     </div>
-                     <div title="Git">
-                         <i class="fa-brands fa-git-alt" style="font-size: 24px; color: #f05032;"></i>
-                         <p style="font-size: 10px; margin-top: 5px;">Git</p>
-                     </div>
-                     <div title="Networking">
-                         <i class="fa-solid fa-network-wired" style="font-size: 24px; color: var(--accent-purple);"></i>
-                         <p style="font-size: 10px; margin-top: 5px;">Network</p>
-                     </div>
-                     <div title="Cloud">
-                         <i class="fa-solid fa-cloud" style="font-size: 24px; color: #fff;"></i>
-                         <p style="font-size: 10px; margin-top: 5px;">Cloud</p>
-                     </div>
-                  </div>
-            </div>
+    <h3 style="margin-bottom: 15px;">Learning Stack</h3>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+        
+        <div class="stack-icon">
+            <i class="fa-brands fa-python" style="font-size: 28px;"></i>
+            <span style="font-size: 10px; margin-top: 8px;">Python</span>
+        </div>
+
+        <div class="stack-icon">
+            <i class="fa-brands fa-linux" style="font-size: 28px;"></i>
+            <span style="font-size: 10px; margin-top: 8px;">Linux</span>
+        </div>
+
+        <div class="stack-icon">
+            <i class="fa-solid fa-terminal" style="font-size: 28px;"></i>
+            <span style="font-size: 10px; margin-top: 8px;">Bash</span>
+        </div>
+
+        <div class="stack-icon">
+            <i class="fa-brands fa-git-alt" style="font-size: 28px;"></i>
+            <span style="font-size: 10px; margin-top: 8px;">Git</span>
+        </div>
+
+        <div class="stack-icon">
+            <i class="fa-solid fa-network-wired" style="font-size: 28px;"></i>
+            <span style="font-size: 10px; margin-top: 8px;">Network</span>
+        </div>
+
+        <div class="stack-icon">
+            <i class="fa-solid fa-cloud" style="font-size: 28px;"></i>
+            <span style="font-size: 10px; margin-top: 8px;">Cloud</span>
+        </div>
+
+    </div>
+</div>
+
         </aside>
         <section id="projects" style="grid-column: span 2; margin-top: 40px;">
             <h2 style="color: var(--accent-blue);">$ ls ./active-projects</h2>
