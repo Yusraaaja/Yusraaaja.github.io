@@ -44,8 +44,13 @@
         /* --- Background Effects --- */
         .bg-glow {
             pointer-events: none; /* PENTING: Supaya bola cahaya tidak bisa di-klik/menghalangi tombol */
-            position: fixed;
-            z-index: -1;
+position: fixed;
+width: 500px;
+height: 500px;
+border-radius: 50%;
+filter: blur(120px);
+z-index: -1;
+transition: all 0.5s ease;
         }
 
         .orb-1 { top: -100px; left: -100px; background: var(--orb-1); }
