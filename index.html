@@ -39,11 +39,10 @@
 
         /* Pastikan elemen lain mengikuti variabel */
         .card { background: var(--glass-bg); border-color: var(--border-glass); }
-        /* Update bagian ini di sekitar baris 42 */
-body.light-mode p[style*="#00ff41"], 
-body.light-mode code[style*="#00ff41"], 
-body.light-mode span[style*="#00ff41"] {
-    color: #b8860b !important; /* Mengubah hijau jadi emas tua agar kontras */
+/* Update baris 42 kamu agar lebih kuat menyapu semua elemen */
+body.light-mode [style*="color: #00ff41"], 
+body.light-mode code {
+    color: #b8860b !important;
 }
         /* Container Saklar */
 .theme-switch-wrapper {
@@ -95,9 +94,10 @@ body.light-mode span[style*="#00ff41"] {
     content: "\f186"; /* Ikon Bulan */
 }
 
-/* Saat Aktif (Light Mode) */
+        /* Saat aktif light-mode */
 input:checked + .slider {
-    background: linear-gradient(135deg, #d4af37, #fff);
+    background: linear-gradient(135deg, #fceabb 0%, #fccd4d 50%, #f8b500 100%);
+    border: 1px solid #d4af37;
 }
 
 input:checked + .slider:before {
@@ -105,7 +105,17 @@ input:checked + .slider:before {
     content: "\f185"; /* Ikon Matahari */
     color: #d4af37;
 }
+/* Di sekitar baris 107, pastikan kodenya seperti ini */
+body.light-mode nav a {
+    color: #333333 !important; /* Warna hitam pekat agar terbaca jelas */
+    font-weight: 600;
+}
 
+/* Khusus untuk link GitHub agar tetap punya aksen emas di mode terang */
+body.light-mode nav a[href*="github"] {
+    color: #b8860b !important; 
+}
+        
         .main-dashboard {
             width: 90%;
             max-width: 1100px;
@@ -296,7 +306,7 @@ input:checked + .slider:before {
 
     </div>
 </div>
-<div class="card" style="margin-top: 20px; font-family: 'Courier New', Courier, monospace; font-size: 12px; background: rgba(0,0,0,0.2);">
+<div class="card" style="margin-top: 20px; font-family: 'Courier New', Courier, monospace; font-size: 12px;">
     <h4 style="color: var(--accent-blue); margin-top: 0;">> System_Log</h4>
     <p style="margin: 5px 0; color: #00ff41;">[OK] Env: Smartphone_Android</p>
     <p style="margin: 5px 0; color: #00ff41;">[OK] Compiler: Pydroid_3</p>
