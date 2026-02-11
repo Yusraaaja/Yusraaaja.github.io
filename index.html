@@ -440,7 +440,7 @@
         if (badgeElement) {
             badgeElement.addEventListener('click', () => {
                 tapCount++;
-                if (tapCount === 5) {
+                if (tapCount === 3) {
                     activateHackMode();
                     tapCount = 0;
                 }
@@ -453,7 +453,7 @@
             const h1 = document.querySelector('h1');
             if (document.body.classList.contains('hack-mode')) {
                 if(h1) h1.classList.add('glitch');
-                alert("ACCESS GRANTED: WELCOME RED TEAM AGRESSIVE");
+                alert("Easter-Egg TERBUKA: WELCOME RED TEAM AGRESSIVE");
             } else {
                 if(h1) h1.classList.remove('glitch');
             }
@@ -469,7 +469,7 @@
             "[OK] System Integrity Check: 100%",
             "[WARN] Awaiting Laptop T480 - Budgeting...",
             "[OK] Personal Branding: Active",
-            "[INFO] Preparing PKL Strategy: Aug 2026"
+            "[INFO] Preparing PKL Strategy: Aug-Sept 2026"
         ];
 
         const logContainer = document.getElementById('log-container');
