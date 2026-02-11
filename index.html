@@ -182,7 +182,18 @@
             font-size: 11px;
             font-weight: bold;
             border: 1px solid var(--accent-blue);
+            
+        /* TAMBAHKAN BARIS INI: */
+            cursor: pointer; /* Mengubah kursor jadi tangan penunjuk */
+            transition: 0.3s; /* Biar efek hovernya halus */
         }
+
+        /* Opsional: Tambah efek sedikit saat diarahkan agar makin yakin itu tombol */
+        .badge:hover {
+            background: rgba(0, 209, 255, 0.2);
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+        
         h1 { font-size: 2.5rem; line-height: 1.1; margin: 20px 0; }
         
         .progress-container {
