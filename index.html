@@ -351,12 +351,12 @@
                 </div>
             </div>
 
-            <div class="card" style="font-family: monospace; font-size: 12px;">
-                <h4 style="color: var(--accent-blue); margin-bottom: 10px;">> System_Log</h4>
-                <p style="color: var(--terminal-green);">[OK] Class: 11 SMK RPL</p>
-                <p style="color: var(--terminal-green);">[OK] Lab: Mon-Tue Practice</p>
-                <p style="color: var(--text-secondary);">[IDLE] Awaiting PKL Aug 2026...</p>
+            <div class="card" style="font-family: monospace; font-size: 12px; min-height: 150px; display: flex; flex-direction: column;">
+                <h4 style="color: var(--accent-blue); margin-bottom: 10px;">> live_monitoring.py</h4>
+                <div id="log-container" style="color: var(--terminal-green); overflow: hidden; line-height: 1.5;">
+                </div>
             </div>
+
         </aside>
     </div>
 
@@ -395,6 +395,45 @@
             if (savedTheme === 'angelic') document.body.classList.add('light-mode');
             typeWriter();
         };
+        
+        const logMessages = [
+            "[OK] Scanning Local Network...",
+            "[INFO] Analyzing Python Script: automation.py",
+            "[OK] Pydroid 3 Environment Ready",
+            "[INFO] Monitoring Hardware Goal: 54%",
+            "[OK] Connection via Termux Secured",
+            "[INFO] Backend Process: Learning FastAPI",
+            "[OK] System Integrity Check: 100%",
+            "[WARN] Awaiting Laptop T480 - Budgeting...",
+            "[OK] Personal Branding: Active",
+            "[INFO] Preparing PKL Strategy: Aug 2026"
+        ];
+
+        const logContainer = document.getElementById('log-container');
+
+        function addLog() {
+            // Ambil pesan secara acak
+           const message = logMessages[Math.floor(Math.random() * logMessages.length)];
+    
+            // Buat elemen log baru
+           const logEntry = document.createElement('div');
+           logEntry.style.marginBottom = "5px";
+           logEntry.innerHTML = `> ${message}`;
+    
+            // Tambahkan ke kontainer
+           logContainer.appendChild(logEntry);
+    
+           // Hapus log paling atas jika sudah terlalu banyak (agar tidak kepanjangan)
+           if (logContainer.childNodes.length > 5) {
+               logContainer.removeChild(logContainer.firstChild);
+           }
+        }
+
+        // Jalankan log setiap 3 detik
+        setInterval(addLog, 3000);
+
+        // Jalankan pertama kali saat load
+        addLog();
     </script>
 </body>
 </html>
