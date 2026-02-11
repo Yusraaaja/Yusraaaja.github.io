@@ -33,6 +33,32 @@
             --orb-2: rgba(255, 255, 255, 0.9);
             --terminal-green: #b8860b;
         }
+        /* Efek Alert Merah */
+        body.hack-mode {
+            --bg-color: #1a0000;
+            --accent-blue: #ff0000;
+            --terminal-green: #ff3333;
+            --glass-bg: rgba(255, 0, 0, 0.05);
+        }
+
+        body.hack-mode .card {
+            border-color: #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+        }
+
+        /* Animasi Glitch sederhana untuk teks */
+        .glitch {
+            animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
@@ -396,6 +422,45 @@
             typeWriter();
         };
         
+        let inputBuffer = "";
+        let tapCount = 0;
+
+        // Fitur 1: Rahasia via Keyboard (untuk PC Lab Sekolah)
+        document.addEventListener('keydown', (e) => {
+            inputBuffer += e.key.toLowerCase();
+            if (inputBuffer.endsWith("hack")) {
+                activateHackMode();
+                inputBuffer = ""; // Reset buffer
+            }
+            // Batasi panjang buffer agar tidak makan memori
+            if (inputBuffer.length > 10) inputBuffer = inputBuffer.substring(1);
+        });
+
+        // Fitur 2: Rahasia via Ketukan (khusus Smartphone/Pydroid user)
+        const badge = document.querySelector('.badge');
+        badge.addEventListener('click', () => {
+            tapCount++;
+            if (tapCount === 5) {
+                activateHackMode();
+                tapCount = 0;
+            }
+            // Reset hitungan jika tidak lanjut mengetuk dalam 2 detik
+            setTimeout(() => { tapCount = 0; }, 2000);
+        });
+
+        function activateHackMode() {
+            document.body.classList.toggle('hack-mode');
+            const h1 = document.querySelector('h1');
+    
+            if (document.body.classList.contains('hack-mode')) {
+                h1.classList.add('glitch');
+                console.log("SYSTEM COMPROMISED: RED TEAM MODE ACTIVE");
+                alert("ACCESS GRANTED: WELCOME RED TEAM AGRESSIVE");
+            } else {
+                h1.classList.remove('glitch');
+            }
+        }
+
         const logMessages = [
             "[OK] Scanning Local Network...",
             "[INFO] Analyzing Python Script: automation.py",
