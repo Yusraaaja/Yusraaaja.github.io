@@ -425,39 +425,37 @@
         let inputBuffer = "";
         let tapCount = 0;
 
-        // Fitur 1: Rahasia via Keyboard (untuk PC Lab Sekolah)
+        // 1. Perbaikan Hack Mode via Keyboard
         document.addEventListener('keydown', (e) => {
             inputBuffer += e.key.toLowerCase();
             if (inputBuffer.endsWith("hack")) {
                 activateHackMode();
-                inputBuffer = ""; // Reset buffer
+                inputBuffer = "";
             }
-            // Batasi panjang buffer agar tidak makan memori
             if (inputBuffer.length > 10) inputBuffer = inputBuffer.substring(1);
         });
 
-        // Fitur 2: Rahasia via Ketukan (khusus Smartphone/Pydroid user)
-        const badge = document.querySelector('.badge');
-        badge.addEventListener('click', () => {
-            tapCount++;
-            if (tapCount === 5) {
-                activateHackMode();
-                tapCount = 0;
-            }
-            // Reset hitungan jika tidak lanjut mengetuk dalam 2 detik
-            setTimeout(() => { tapCount = 0; }, 2000);
-        });
+        // 2. Perbaikan Hack Mode via Badge (Dibuat lebih aman agar tidak crash)
+        const badgeElement = document.querySelector('.badge') || document.querySelector('.badge-label'); 
+        if (badgeElement) {
+            badgeElement.addEventListener('click', () => {
+                tapCount++;
+                if (tapCount === 5) {
+                    activateHackMode();
+                    tapCount = 0;
+                }
+                setTimeout(() => { tapCount = 0; }, 2000);
+            });
+        }
 
         function activateHackMode() {
             document.body.classList.toggle('hack-mode');
             const h1 = document.querySelector('h1');
-    
             if (document.body.classList.contains('hack-mode')) {
-                h1.classList.add('glitch');
-                console.log("SYSTEM COMPROMISED: RED TEAM MODE ACTIVE");
+                if(h1) h1.classList.add('glitch');
                 alert("ACCESS GRANTED: WELCOME RED TEAM AGRESSIVE");
             } else {
-                h1.classList.remove('glitch');
+                if(h1) h1.classList.remove('glitch');
             }
         }
 
