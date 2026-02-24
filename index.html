@@ -33,6 +33,7 @@
             --orb-2: rgba(255, 255, 255, 0.9);
             --terminal-green: #b8860b;
         }
+
         /* Efek Alert Merah */
         body.hack-mode {
             --bg-color: #1a0000;
@@ -68,7 +69,7 @@
             color: var(--text-primary);
             transition: all 0.5s ease;
             overflow-x: hidden;
-            padding: 0 20px; /* Jarak aman agar tidak mepet layar */
+            padding: 0 20px;
             font-family: 'Segoe UI', sans-serif;
         }
 
@@ -186,27 +187,22 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 30px; /* Seragam dengan lekukan card */
+            border-radius: 30px;
             border: 2px solid var(--border-glass);
             box-shadow: 0 0 20px rgba(0, 209, 255, 0.2);
             transition: 0.5s;
         }
 
-        /* Efek Glow saat Hover */
         .profile-wrapper:hover .profile-pic {
             border-color: var(--accent-blue);
             transform: scale(1.05);
            box-shadow: 0 0 30px var(--accent-blue);
         }
 
-        /* Dekorasi di belakang foto agar lebih "Cyber" */
         .profile-wrapper::after {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
             border: 1px dashed var(--accent-blue);
             border-radius: 35px;
             opacity: 0.3;
@@ -218,7 +214,6 @@
             to { transform: rotate(360deg); }
         }
 
-
         /* --- Components --- */
         .badge {
             display: inline-block;
@@ -229,13 +224,10 @@
             font-size: 11px;
             font-weight: bold;
             border: 1px solid var(--accent-blue);
-            
-        /* TAMBAHKAN BARIS INI: */
-            cursor: pointer; /* Mengubah kursor jadi tangan penunjuk */
-            transition: 0.3s; /* Biar efek hovernya halus */
+            cursor: pointer; 
+            transition: 0.3s; 
         }
 
-        /* Opsional: Tambah efek sedikit saat diarahkan agar makin yakin itu tombol */
         .badge:hover {
             background: rgba(0, 209, 255, 0.2);
             box-shadow: 0 0 10px var(--accent-blue);
@@ -256,11 +248,25 @@
             box-shadow: 0 0 20px var(--accent-blue);
         }
 
-        /* --- Learning Stack Grid --- */
+        /* --- Current Focus Labels (NEW) --- */
+        .focus-list { list-style: none; padding: 0; }
+        .focus-list li { margin-bottom: 12px; font-size: 13px; line-height: 1.6; }
+        .status-now {
+            background: rgba(0, 255, 157, 0.15); color: #00ff9d; padding: 2px 8px;
+            border-radius: 4px; font-weight: bold; font-size: 11px; margin-right: 8px;
+            border: 1px solid rgba(0, 255, 157, 0.3); text-transform: uppercase;
+        }
+        .status-soon {
+            background: rgba(255, 184, 0, 0.15); color: #ffb800; padding: 2px 8px;
+            border-radius: 4px; font-weight: bold; font-size: 11px; margin-right: 8px;
+            border: 1px solid rgba(255, 184, 0, 0.3); text-transform: uppercase;
+        }
+
+        /* --- Learning Stack Grid (UPDATED) --- */
         .stack-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 15px;
             margin-top: 20px;
         }
         .stack-item {
@@ -269,6 +275,7 @@
             align-items: center;
             gap: 8px;
             transition: 0.3s;
+            padding: 10px 0;
         }
         .story-quote {
             border-left: 4px solid var(--accent-blue);
@@ -277,6 +284,7 @@
         }
         .stack-item i { font-size: 28px; }
         .stack-item span { font-size: 10px; font-weight: bold; color: var(--text-secondary); }
+        .stack-item:hover { transform: translateY(-3px); }
         .stack-item:hover i { transform: scale(1.2); filter: drop-shadow(0 0 10px currentColor); }
         
         .fa-python { color: #3776ab; }
@@ -285,10 +293,10 @@
         .fa-git-alt { color: #f05032; }
         .fa-network-wired { color: #7000ff; }
         .fa-cloud { color: #00d1ff; }
-        .fa-sql { color: #ffa200; }
-        .fa-html { color: #ff4500; }
-        .fa-css { color: #000080; }
-        .fa-javascript { color: #ffff00; }
+        .fa-html5 { color: #e34f26; }
+        .fa-css3-alt { color: #1572b6; }
+        .fa-js { color: #f7df1e; }
+        .fa-database { color: #00758f; }
 
         /* --- Social Links (Centered) --- */
         .social-link {
@@ -386,7 +394,7 @@
 
             <section id="projects">
                 <h2 style="margin: 30px 0; color: var(--accent-blue);">Projects</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr) gap: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                     <div class="card">
                         <span style="font-size: 11px; color: var(--accent-purple);">#Python #Automation</span>
                         <h4 style="margin: 10px 0;">Auto-Reporting Tool</h4>
@@ -402,6 +410,16 @@
         </main>
 
         <aside>
+            <div class="card">
+                <h3>Current Focus</h3>
+                <ul class="focus-list" style="margin-top: 15px;">
+                    <li><span class="status-now">NOW:</span> UI/UX, Web Development</li>
+                    <li><span class="status-soon">SOON:</span> AI/ML, AWS & Azure</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 5px;">></span> Python Automation (Fokus Utama)</li>
+                    <li><span style="color: var(--accent-blue); margin-right: 5px;">></span> Malware Analysis & Hardware Hacking</li>
+                </ul>
+            </div>
+
             <div class="card">
                 <h3>Hardware Goal</h3>
                 <p style="margin-top: 15px; font-size: 14px; font-weight: bold;">ThinkPad T480</p>
@@ -420,17 +438,17 @@
                     <div class="stack-item"><i class="fab fa-git-alt"></i><span>GIT</span></div>
                     <div class="stack-item"><i class="fas fa-network-wired"></i><span>NETWORK</span></div>
                     <div class="stack-item"><i class="fas fa-cloud"></i><span>CLOUD</span></div>
-                    <div class="stack-item"><i class="fas fa-sql"></i><span>SQL</span></div>
-                    <div class="stack-item"><i class="fas fa-html"></i><span>HTML</span></div>
-                    <div class="stack-item"><i class="fas fa-css"></i><span>CSS</span></div>
-                    <div class="stack-item"><i class="fas fa-javascript"></i><span>JAVASCRIPT</span></div>
+                    <div class="stack-item"><i class="fab fa-html5"></i><span>HTML</span></div>
+                    <div class="stack-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+                    <div class="stack-item"><i class="fab fa-js"></i><span>JAVASCRIPT</span></div>
+                    <div class="stack-item"><i class="fas fa-database"></i><span>SQL</span></div>
                 </div>
             </div>
 
             <div class="card" style="text-align: center;">
                 <h3>Social Networking</h3>
                 <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 20px;">Mari terhubung dan berkolaborasi.</p>
-                <div style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap;">
+                <div class="social-centered">
                     <a href="https://www.facebook.com/share/17vTbRXPJ5/" target="_blank" class="social-link">
                         <i class="fab fa-facebook"></i>
                     </a>
@@ -504,7 +522,7 @@
             if (inputBuffer.length > 10) inputBuffer = inputBuffer.substring(1);
         });
 
-        // 2. Perbaikan Hack Mode via Badge (Dibuat lebih aman agar tidak crash)
+        // 2. Perbaikan Hack Mode via Badge 
         const badgeElement = document.querySelector('.badge') || document.querySelector('.badge-label'); 
         if (badgeElement) {
             badgeElement.addEventListener('click', () => {
@@ -534,8 +552,8 @@
             "[OK] Pydroid 3 Environment Ready",
             "[INFO] Monitoring Hardware Goal: 54%",
             "[OK] Connection via Termux Secured",
-            "[INFO] Backend Process: Learning FastAPI",
-            "[OK] System Integrity Check: 100%",
+            "[INFO] Leveling Up: UI/UX & Web Development",
+            "[OK] Database Schema: SQL Integration",
             "[WARN] Awaiting Laptop T480 - Budgeting...",
             "[OK] Personal Branding: Active",
             "[INFO] Preparing PKL Strategy: Aug-Sept 2026"
@@ -544,27 +562,19 @@
         const logContainer = document.getElementById('log-container');
 
         function addLog() {
-            // Ambil pesan secara acak
+           if (!logContainer) return; 
            const message = logMessages[Math.floor(Math.random() * logMessages.length)];
-    
-            // Buat elemen log baru
            const logEntry = document.createElement('div');
            logEntry.style.marginBottom = "5px";
            logEntry.innerHTML = `> ${message}`;
-    
-            // Tambahkan ke kontainer
+           
            logContainer.appendChild(logEntry);
-    
-           // Hapus log paling atas jika sudah terlalu banyak (agar tidak kepanjangan)
            if (logContainer.childNodes.length > 5) {
                logContainer.removeChild(logContainer.firstChild);
            }
         }
 
-        // Jalankan log setiap 3 detik
         setInterval(addLog, 3000);
-
-        // Jalankan pertama kali saat load
         addLog();
     </script>
 </body>
