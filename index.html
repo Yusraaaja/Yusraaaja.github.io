@@ -285,6 +285,17 @@
             text-transform: uppercase;
         }
 
+        .cert-img-container img:hover {
+            transform: scale(1.05); /* Memberikan efek zoom sedikit saat disentuh/hover */
+            cursor: pointer;
+        }
+
+        .cert-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         /* --- Current Focus Labels (NEW) --- */
         .focus-list { list-style: none; padding: 0; }
         .focus-list li { margin-bottom: 12px; font-size: 13px; line-height: 1.6; }
@@ -448,15 +459,18 @@
                 <h2 style="margin: 30px 0; color: var(--accent-blue);">Certifications</h2>
                     <div class="cert-grid">
                         <div class="cert-card">
-                            <i class="fas fa-certificate cert-icon"></i>
+                            <div class="cert-img-container" style="margin-bottom: 15px; overflow: hidden; border-radius: 10px;">
+                                <img src="path/ke/gambar/sertifikat-html.jpg" alt="Certificate Introduction to HTML" style="width: 100%; height: auto; display: block; transition: transform 0.3s;">
+                            </div>
+            
                             <div style="margin-bottom: 10px;">
                                 <span class="cert-badge">SoloLearn</span>
                             </div>
                             <h4 style="margin: 5px 0;">Introduction to HTML</h4>
                             <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 15px;">
-                                Diselesaikan dalam 2 hari sebagai persiapan LKS Web Technologies 2026.
+                                Diselesaikan dalam 2 hari menggunakan smartphone sebagai persiapan LKS 2026.
                             </p>
-                            <a href="#" class="badge" style="text-decoration: none;">View Certificate</a>
+                            <a href="path/ke/gambar/sertifikat-html.jpg" target="_blank" class="badge" style="text-decoration: none;">View Full Image</a>
                         </div>
                     </div>
             </section>
