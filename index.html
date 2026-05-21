@@ -247,6 +247,52 @@
             background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
             box-shadow: 0 0 20px var(--accent-blue);
         }
+        /* --- Goals Progress Styling --- */
+        .target-progress-container {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(15px);
+        }
+        
+        .progress-item {
+            margin-bottom: 20px;
+        }
+        
+        .progress-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        
+        .progress-percent {
+            font-weight: bold;
+            color: var(--accent-blue);
+            font-family: 'Courier New', Courier, monospace; /* Nuansa hacking/terminal */
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 20px;
+            transition: width 1.5s ease-in-out; /* Animasi bar mengisi pelan-pelan saat load */
+        }
 
         /* --- Certifications Section --- */
         .cert-grid {
@@ -526,6 +572,52 @@
                     <div class="progress-bar" style="width: 100%;"></div>
                 </div>
                 <p style="font-size: 11px; text-align: right; color: var(--accent-blue);">100% Laptop is Available</p>
+            </div>
+
+            <div class="card target-progress-container" style="margin-top: 25px;">
+                <h3 style="color: var(--accent-blue); margin-bottom: 20px; font-size: 18px;">
+                    <i class="fas fa-tasks" style="margin-right: 10px;"></i>Strategic Goals Progress
+                </h3>
+            
+                <div class="progress-item">
+                    <div class="progress-info">
+                        <span>Progres untuk Ausbildung (Bahasa Jerman A1-B2)</span>
+                        <span class="progress-percent">35%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 35%; background: linear-gradient(90deg, #00d1ff, #0066ff);"></div>
+                    </div>
+                </div>
+            
+                <div class="progress-item">
+                    <div class="progress-info">
+                        <span>Progres Belajar Red Teaming (TryHackMe & Labs)</span>
+                        <span class="progress-percent">50%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 50%; background: linear-gradient(90deg, #ff3333, #aa0000);"></div>
+                    </div>
+                </div>
+            
+                <div class="progress-item">
+                    <div class="progress-info">
+                        <span>Progres Kesiapan PKL (Python Automation & Data Engineer)</span>
+                        <span class="progress-percent">75%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 75%; background: linear-gradient(90deg, #00ffcc, #0099ff);"></div>
+                    </div>
+                </div>
+            
+                <div class="progress-item">
+                    <div class="progress-info">
+                        <span>Sertifikasi & Pembuatan Web SPA UMKM</span>
+                        <span class="progress-percent">60%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 60%; background: linear-gradient(90deg, #f7df1e, #ff9900);"></div>
+                    </div>
+                </div>
             </div>
 
             <div class="card">
